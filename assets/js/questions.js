@@ -2,20 +2,20 @@
 
 
 let startButton = document.querySelector('#start');
-let questions = document.querySelector('#questions');
+let questionsHeader = document.querySelector('#questions');
 let questionsTitle = document.querySelector('#question-title')
 let choices = document.querySelector('#choices')
 let startScreen = document.querySelector('#start-screen')
 let buttonOption = '';
 
-let Questions = [
+let questions = [
   {
-    question: 'Pick a number',
-    choises: ['1', '2', '3','4'],
+    question: 'Pick a number 2',
+    choices: ['1', '2', '3','4'],
     answer: 2
   },
   {
-    question: 'Pick a number',
+    question: 'Pick a letter',
     choices: ['A', 'B', 'C', 'D'],
     Answer: "'c"
   },
@@ -31,32 +31,22 @@ let Questions = [
   }
 ]
 
-let questionOne = 'Pick a number';
-let optionsOne = [1, 2, 3, 4];
+// let questionOne = 'Pick a number';
+// let optionsOne = [1, 2, 3, 4];
 
 
-let questionTwo = 'Pick a letter';
-let optionsTwo = ['A', 'B', 'C', 'D'];
+// let questionTwo = 'Pick a letter';
+// let optionsTwo = ['A', 'B', 'C', 'D'];
 
-let questionThree = 'pick a symbol';
-let optionsThree = ['£', '$', '%', '&'];
-
-
-let questionsFour = 'pick a team'
-let optionsFour = ['Real', 'Barca', 'juve', 'Milan'];
+// let questionThree = 'pick a symbol';
+// let optionsThree = ['£', '$', '%', '&'];
 
 
-// for (const key in object) {
-//   if (Object.hasOwnProperty.call(object, key)) {
-//     const element = object[key];
-
-//   }
-// }
+// let questionsFour = 'pick a team'
+// let optionsFour = ['Real', 'Barca', 'juve', 'Milan'];
 
 
 
-
-console.log(Questions[0].question);
 // var listEl = document.createElement("ol");
 
 // var li1 = document.createElement("li");
@@ -84,8 +74,8 @@ console.log(Questions[0].question);
 
 startButton.addEventListener("click", function (event) {
   startScreen.setAttribute("style", "display: none;");
-  questions.setAttribute("style", "display: contents;");
-  creatingLi(questionOne, optionsOne);
+  questionsHeader.setAttribute("style", "display: contents;");
+  creatingLi();
 
 
 
@@ -112,38 +102,82 @@ optionChosen.addEventListener('click', function (event) {
 
 })
 
-
-function creatingLi() {
-  let displayedQuestion = '';
+let displayedQuestion = '';
   let displayedchoices = '';
-  for (let i = 0; i < Questions.length; i++) {
-    displayedQuestion = Questions[i];
-    displayedchoices = Questions[i]
-
-    questionsTitle.innerHTML = displayedQuestion.question;
-
-
-
-    var ol = document.createElement('ol');
-    // for (i = 0; i < choices.length; i++) {
-    //   choices = Questions.choices[i]
-
-
-    var button = document.createElement('button');
-    button.setAttribute('id', 'optionss')
-    ol.appendChild(button);
-    button.innerHTML = displayedchoices.choices
-    console.log(button.innerHTML);
+  let displayAnswers = '';
+  let i = 1;
+function creatingLi() {
+  
+for (let i in questions) {
+  
+  displayedQuestion = questions[i]['question'];
+  questionsTitle.innerHTML = displayedQuestion;
   }
-  document.getElementById('choices').appendChild(ol);
+
+  console.log(questions[i]['question']);
 
 
+// for (let i = 0; i < questions.length; i++) {
+//   displayedQuestion = questions[i].question
+//   displayedchoices = questions[i].choices
+//   console.log(displayedQuestion)
+//   var button = document.createElement('button');
+//   var ol = document.createElement('ol');
+//   var button = document.createElement('button');
+//   button.setAttribute('id', 'optionss')
+//   ol.appendChild(button);  
+//   questionsTitle.innerHTML = displayedQuestion;
+
+// //question are bein obtained , next thing to do is to make sure that are being sent to the proper in the HTML 
+
+//   button.innerHTML = displayedchoices
+//   console.log(button);
 }
+ 
+
+//   for (let i = 0; i < questions.length; i++){
+//  let displayedchoices = questions.choices
+//     var ol = document.createElement('ol');
+//   var button = document.createElement('button');
+//   button.setAttribute('id', 'optionss')
+//   ol.appendChild(button);
+//   displayedchoices = questions.choices;
+//   button.innerHTML = displayedchoices
+//   console.log(button.innerHTML);
+//   document.getElementById('choices').appendChild(ol);
+//   }
+
+// }
+
+creatingLi()
+
+  // questionsTitle.innerHTML += displayedQuestion;
 
 
 
 
 
 
-console.log(document.body);
+  
+        
+    
+
+  
+   
+
+// let displayedchoices = questions[i].choices 
+
+// for (var questions. of questions) {
+//   var ol = document.createElement('ol');
+// var button = document.createElement('button');
+// button.setAttribute('id', 'optionss')
+// ol.appendChild(button);
+// displayedchoices = questions.choices[i];
+// button.innerHTML = displayedchoices
+// console.log(button.innerHTML);
+
+
+
+
+
 
