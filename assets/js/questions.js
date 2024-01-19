@@ -1,123 +1,117 @@
-let startButton = document.querySelector('#start');
-let questions = document.querySelector('#questions');
-let questionsTitle = document.querySelector('#question-title')
- let choices = document.querySelector('#choices')
-let startScreen = document.querySelector('#start-screen')
-let buttonOption = '';
+let startButton = document.querySelector("#start");
+let questions = document.querySelector("#questions");
+let questionsTitle = document.querySelector("#question-title");
+let choices = document.querySelector("#choices");
+let startScreen = document.querySelector("#start-screen");
+let buttonOption = "";
 
 let Questions = [
   {
-    question: 'Pick a number',
-    choises: ['1', '2', '3','4'],
-    answer: 2
+    question: "Pick a number",
+    choices: ["1", "2", "3", "4"],
+    correctAnswer: "1",
   },
   {
-    question: 'Pick a number',
-    choices: ['A', 'B', 'C', 'D'],
-    Answer: "'c"
+    question: "Pick a letter",
+    choices: ["A", "B", "C", "D"],
+    correctAnswer: "D",
   },
   {
-    question: 'pick a symbol',
-    choices: ['£', '$', '%', '&'],
-    correctAnswer: "£"
+    question: "pick a symbol",
+    choices: ["£", "$", "%", "&"],
+    correctAnswer: "£",
   },
   {
-    question: 'pick a team',
-    choices: ['Real', 'Barca', 'juve', 'Milan'],
-    correctAnswer: "'Real'"
+    question: "pick a team",
+    choices: ["Real", "Barca", "juve", "Milan"],
+    correctAnswer: "'Real'",
+  },
+];
+
+let questionIndex = 0;
+let score = 0;
+// questionIndex ++;
+
+function startQuiz() {
+  startScreen.setAttribute("class", "hide");
+  questions.removeAttribute("class");
+  getQuestion();
+  setTime();
+}
+
+// for (let i = 0; i < Questions.length; i++) {
+//   let question = Questions[i];
+//   console.log(question);
+
+var timer = document.getElementById('time');
+
+let secondsLeft = 20;
+function setTime() {
+  // Sets interval in variable
+  var timerInterval = setInterval(function() {
+    secondsLeft--;
+    timer.textContent = secondsLeft;
+
+    if(secondsLeft <= 0) {
+      // Stops execution of action at set interval
+      secondsLeft === 0;
+      clearInterval(timerInterval);
+      // Calls function to create and append image
+    }
+
+  }, 1000);
+}
+
+function getQuestion() {
+  let currentQuestion = Questions[questionIndex];
+  questionsTitle.textContent = currentQuestion.question;
+  choices.innerHTML = "";
+
+
+  for (let i = 0; i < currentQuestion.choices.length; i++) {
+    let choice = document.createElement("button");
+    choice.textContent = currentQuestion.choices[i];
+    choices.appendChild(choice);
+  
+
+
+
+    choice.addEventListener("click", function () {
+      console.log(choice.textContent);
+      console.log(currentQuestion.correctAnswer);
+       
+
+      if (choice.textContent === currentQuestion.correctAnswer) {
+        let result = document.createElement('p');
+        choices.appendChild(result);
+        result.innerHTML = "Correct";
+        questionIndex = questionIndex + 1;
+        getQuestion();
+      } else {
+        let result = document.createElement('p');
+        choices.appendChild(result);
+        result.innerHTML = "Wrong";        
+        questionIndex = questionIndex + 1;
+        secondsLeft -= 5;
+        getQuestion();
+
+      }
+      console.log(i);
+
+      if (i == currentQuestion.choices.length - 1) {
+        console.log('end of test');
+        
+      }
+    });
+   
   }
-]
-
-let questionOne = 'Pick a number';
-let optionsOne = [1, 2, 3, 4];
-
-
-let questionTwo = 'Pick a letter';
-let optionsTwo = ['A', 'B', 'C', 'D'];
-
-let questionThree = 'pick a symbol';
-let optionsThree = ['£', '$', '%', '&'];
-
-
-let questionsFour = 'pick a team'
-let optionsFour = ['Real', 'Barca', 'juve', 'Milan'];
-
-
-// for (const key in object) {
-//   if (Object.hasOwnProperty.call(object, key)) {
-//     const element = object[key];
-
-//   }
-// }
-
-
-
-
-console.log(Questions[0].question);
-// var listEl = document.createElement("ol");
-
-// var li1 = document.createElement("li")
-startButton.addEventListener("click", function (event) {
-  startScreen.setAttribute("style", "display: none;");
-  questions.setAttribute("style", "display: contents;");
-  creatingLi(questionOne, optionsOne);
-
-
-
-  event.stopPropagation();
-
-});
-
-
-var optionChosen = document.querySelector('#choices')
-
-
-optionChosen.addEventListener('click', function (event) {
-  let buttonClicked = event.target.innerHTML
-  console.log(event.target.innerHTML);
-  let scoreForEach = document.createElement('p');
-  choices.appendChild(scoreForEach);
-  if (buttonClicked == 2) {
-    scoreForEach.innerHTML = 'Correct!'
-    console.log('correct');
-  } else {
-    return scoreForEach.innerHTML = 'Wrong!'
-  }
-  console.log(event);
-
-})
-
-
-function creatingLi() {
-  let displayedQuestion = '';
-  let displayedchoices = '';
-  for (let i = 0; i < Questions.length; i++) {
-    displayedQuestion = Questions[i];
-    displayedchoices = Questions[i]
-
-    questionsTitle.innerHTML = displayedQuestion.question;
-
-
-
-    var ol = document.createElement('ol');
-    // for (i = 0; i < choices.length; i++) {
-    //   choices = Questions.choices[i]
-
-
-    var button = document.createElement('button');
-    button.setAttribute('id', 'optionss')
-    ol.appendChild(button);
-    button.innerHTML = displayedchoices.choices
-    console.log(button.innerHTML);
-  }
-  document.getElementById('choices').appendChild(ol);
-
-
 }
 
 
+startButton.addEventListener("click", startQuiz);
 
 
 
 
-console.log(document.body);
+
+
