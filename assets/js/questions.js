@@ -4,6 +4,7 @@ let questionsTitle = document.querySelector("#question-title");
 let choices = document.querySelector("#choices");
 let startScreen = document.querySelector("#start-screen");
 let ednOfQuiz = document.querySelector('#end-screen');
+let yourScore = document.getElementById('final-score')
 let buttonOption = "";
 
 let Questions = [
@@ -27,6 +28,8 @@ let Questions = [
     choices: ["Real", "Barca", "juve", "Milan"],
     correctAnswer: "Real",
   },
+
+  
 ];
 
 let questionIndex = 0;
@@ -46,7 +49,7 @@ function startQuiz() {
 
 var timer = document.getElementById('time');
 
-let secondsLeft = 20;
+let secondsLeft = 60;
 function setTime() {
   // Sets interval in variable
   var timerInterval = setInterval(function() {
@@ -57,8 +60,13 @@ function setTime() {
       // Stops execution of action at set interval
       secondsLeft === 0;
       clearInterval(timerInterval);
-      endtQuiz();
       // Calls function to create and append image
+    } 
+    
+    if (questionIndex === 3) {
+      clearInterval(timerInterval);
+        yourScore.innerHTML = secondsLeft;
+
     }
 
   }, 1000);
@@ -101,10 +109,9 @@ function getQuestion() {
       }
       console.log(i);
 
-      if (i === 3) {
-        console.log('end of test');
-        
-
+      if (questionIndex === 3) {
+        endQuiz()
+        setTime()
       }
     });
    
@@ -114,10 +121,12 @@ function getQuestion() {
 
 startButton.addEventListener("click", startQuiz);
 
-function endtQuiz() {
+function endQuiz() {
   questions.setAttribute("class", "hide");
   choices.setAttribute("class", "hide");
   ednOfQuiz.removeAttribute("class");
+  yourScore.innerHTML = secondsLeft;
+
 }
 
 
