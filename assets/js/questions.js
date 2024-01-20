@@ -3,13 +3,14 @@ let questions = document.querySelector("#questions");
 let questionsTitle = document.querySelector("#question-title");
 let choices = document.querySelector("#choices");
 let startScreen = document.querySelector("#start-screen");
+let ednOfQuiz = document.querySelector('#end-screen');
 let buttonOption = "";
 
 let Questions = [
   {
     question: "Pick a number",
     choices: ["1", "2", "3", "4"],
-    correctAnswer: "1",
+    correctAnswer: "3",
   },
   {
     question: "Pick a letter",
@@ -24,7 +25,7 @@ let Questions = [
   {
     question: "pick a team",
     choices: ["Real", "Barca", "juve", "Milan"],
-    correctAnswer: "'Real'",
+    correctAnswer: "Real",
   },
 ];
 
@@ -56,6 +57,7 @@ function setTime() {
       // Stops execution of action at set interval
       secondsLeft === 0;
       clearInterval(timerInterval);
+      endtQuiz();
       // Calls function to create and append image
     }
 
@@ -85,22 +87,24 @@ function getQuestion() {
         let result = document.createElement('p');
         choices.appendChild(result);
         result.innerHTML = "Correct";
+        alert('correct')
         questionIndex = questionIndex + 1;
         getQuestion();
       } else {
         let result = document.createElement('p');
         choices.appendChild(result);
-        result.innerHTML = "Wrong";        
+        result.innerHTML = "Wrong"; 
+        alert('wrong')       
         questionIndex = questionIndex + 1;
         secondsLeft -= 5;
         getQuestion();
-
       }
       console.log(i);
 
-      if (i == currentQuestion.choices.length - 1) {
+      if (i === 3) {
         console.log('end of test');
         
+
       }
     });
    
@@ -109,6 +113,12 @@ function getQuestion() {
 
 
 startButton.addEventListener("click", startQuiz);
+
+function endtQuiz() {
+  questions.setAttribute("class", "hide");
+  choices.setAttribute("class", "hide");
+  ednOfQuiz.removeAttribute("class");
+}
 
 
 
