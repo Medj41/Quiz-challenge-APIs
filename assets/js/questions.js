@@ -34,6 +34,12 @@ let Questions = [
     choices: ["Real", "Barca", "juve", "Milan"],
     correctAnswer: "Real",
   },
+  {
+    question: "",
+    choices: ["", "", "", ""],
+    correctAnswer: "",
+  }
+
 
 
 ];
@@ -63,13 +69,13 @@ function setTime() {
       secondsLeft === 0;
       clearInterval(timerInterval);
     }
+    // issue with dispplaying all questions
     if (questionIndex === 3) {
       clearInterval(timerInterval);
       yourScore.innerHTML = secondsLeft;
     }
   }, 1000);
 }
-
 
 // loop thrpugh the questions until the end questions 
 function getQuestion() {
@@ -84,19 +90,20 @@ function getQuestion() {
     choice.textContent = currentQuestion.choices[i];
     choices.appendChild(choice);
     choice.addEventListener("click", function () {
-      console.log(choice.textContent);
-      console.log(currentQuestion.correctAnswer);
 
-     
-      function rightSound(){
-        let right = new Audio ('assets/sfx/correct.wav');
+      
+
+
+
+      function rightSound() {
+        let right = new Audio('assets/sfx/correct.wav');
         right.play();
-    }
-    
-    function wrongSound(){
-        let wrong = new Audio ('assets/sfx/incorrect.wav');
+      }
+
+      function wrongSound() {
+        let wrong = new Audio('assets/sfx/incorrect.wav');
         wrong.play();
-    }
+      }
 
 
       if (choice.textContent === currentQuestion.correctAnswer) {
@@ -106,7 +113,8 @@ function getQuestion() {
         result.innerHTML = "Correct";
         rightSound();
         // alert('correct')
-        questionIndex = questionIndex + 1;
+        questionIndex++;
+
         getQuestion();
       } else {
         let result = document.createElement('p');
@@ -114,19 +122,22 @@ function getQuestion() {
         result.innerHTML = "Wrong";
         wrongSound()
         // alert('wrong')
-        questionIndex = questionIndex + 1;
+        questionIndex++;
         secondsLeft -= 5;
         getQuestion();
       }
-      console.log(i);
 
-      if (questionIndex === Questions.length - 1) {
-        endQuiz()
-        setTime()
+
+
+// issue with dispplaying all questions
+      if (questionIndex === 4) { 
+        endQuiz();
+        setTime();
       }
     });
 
   }
+
 }
 
 startButton.addEventListener("click", startQuiz);
@@ -138,44 +149,42 @@ function endQuiz() {
   choices.setAttribute("class", "hide");
   ednOfQuiz.removeAttribute("class");
   yourScore.innerHTML = secondsLeft;
-  
+
 }
 
 
 const scoreInitials = []
 
-function saveScoreInitials(){  
+function saveScoreInitials() {
 
   // why this one did work but not when created at the top
-let inputElement = document.getElementById('initials');
-let initials = inputElement.value;
-score = yourScore.innerHTML
-localStorage.setItem('score', JSON.stringify(score));
+  let inputElement = document.getElementById('initials');
+  let initials = inputElement.value;
+  score = yourScore.innerHTML
+  localStorage.setItem('score', JSON.stringify(score));
 
-localStorage.setItem('initials', initials);
-let finalPage = window.location.href = 'highscores.html';
-// scoreInitials.puinitials);
-// console.log(JSON.parse(localStorage.getItem('score')));
-// console.log(localStorage.getItem('initials'));
-let endResult = document.querySelector('#highscores');
-console.log(endResult);
-let liEl = document.createElement('li');
-console.log(liEl);
+  localStorage.setItem('initials', initials);
+  let finalPage = window.location.href = 'highscores.html';
+  scoreInitials.puinitials;
+  console.log(JSON.parse(localStorage.getItem('score')));
+  console.log(localStorage.getItem('initials'));
 
-liEl.innerHTML = 'Hello'
-endResult.appendChild(liEl);
 
-console.log((`${localStorage.getItem('initials')}-${JSON.parse(localStorage.getItem('score'))}`));
+  // let endResult = document.querySelector('#highscores');
+  // console.log(endResult);
+  // let liEl = document.createElement('li');
+  // console.log(liEl);
+
+  // liEl.innerHTML = 'Hello'
+  // endResult.appendChild(liEl);
+
+  // console.log((`${localStorage.getItem('initials')}-${JSON.parse(localStorage.getItem('score'))}`));
 
 }
 
 
 
 submitButton.addEventListener("click", saveScoreInitials);
-
-
-
-console.log((`${localStorage.getItem('initials')}-${JSON.parse(localStorage.getItem('score'))}`));
 
 
 
