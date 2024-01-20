@@ -15,24 +15,35 @@ let buttonOption = "";
 
 let Questions = [
   {
-    question: "Pick a number",
-    choices: ["1", "2", "3", "4"],
-    correctAnswer: "3",
+    question: " What does the DOM stand for in JavaScript?",
+    choices: ["Document Object Model", "Data Object Model", "Dynamic Object Method", "Document Oriented Module"],
+    correctAnswer: "Document Object Model",
   },
   {
-    question: "Pick a letter",
-    choices: ["A", "B", "C", "D"],
-    correctAnswer: "D",
+    question: "How can you declare a variable in JavaScript?",
+    choices: ["var myVar", " variable myVar", " let myVar", "const myVar"],
+    correctAnswer: "let myVar",
   },
   {
-    question: "pick a symbol",
-    choices: ["£", "$", "%", "&"],
-    correctAnswer: "£",
+    question: "What is the purpose of the addEventListener method in JavaScript?",
+    choices: ["To create a new HTML element", "To link external stylesheets", "To attach an event handler function to an element", "To execute a function immediately"],
+    correctAnswer: "To attach an event handler function to an element",
   },
   {
-    question: "pick a team",
-    choices: ["Real", "Barca", "juve", "Milan"],
-    correctAnswer: "Real",
+    question: "How do you comment a single line of code in JavaScript?",
+    choices: [" /* comment */", " // comment", " <!-- comment -->", " -- comment --"],
+    correctAnswer: " // comment",
+  },
+  {
+    question: "What does the JSON.stringify() function do in JavaScript?",
+    choices: [" Parses a JSON string into an object", "  Converts a JavaScript object into a JSON string", " Compares two JSON objects for equality", "Removes all spaces from a JSON string"],
+    correctAnswer: "Converts a JavaScript object into a JSON string",
+  },
+
+  {
+    question: "How can you check the type of a variable in JavaScript?",
+    choices: [" ) typeof myVar", "  typeOf(myVar)", "myVar.type()", " getVariableType(myVar)"],
+    correctAnswer: "typeof myVar",
   },
   {
     question: "",
