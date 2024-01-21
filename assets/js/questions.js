@@ -77,13 +77,14 @@ function setTime() {
     secondsLeft--;
     timer.textContent = secondsLeft;
     if (secondsLeft <= 0) {
-      secondsLeft === 0;
       clearInterval(timerInterval);
     }
     // issue with dispplaying all questions
-    if (questionIndex === 3) {
+    if (questionIndex === 4) {
+      
+      // yourScore.innerHTML = secondsLeft;
       clearInterval(timerInterval);
-      yourScore.innerHTML = secondsLeft;
+    
     }
   }, 1000);
 }
