@@ -1,88 +1,40 @@
-# Module 6 Challenge Web APIs: Code Quiz
+Code Quiz Challenge README
+Welcome to the Code Quiz Challenge application! This application is designed to test your coding knowledge through a timed quiz with multiple-choice questions. Below you will find all the necessary information to get started, how to use the application, and details on its functionalities.
 
-## Your Task
+Getting Started
+To get started with the Code Quiz Challenge, you'll need to clone this repository to your local machine, and then open the index.html file in your preferred web browser to launch the application.
 
-As you proceed in your journey to becoming a front-end web developer, it’s likely that you’ll be asked to complete a coding assessment, perhaps as part of an interview process. A typical coding assessment is a combination of multiple-choice questions and interactive coding challenges. 
+Prerequisites
+Make sure you have a modern web browser installed such as:
 
-To help you become familiar with these tests and give you a chance to apply the skills from this module, this week’s challenge invites you to build a timed coding quiz with multiple-choice questions. This app will run in the browser, and will feature dynamically updated HTML and CSS powered by JavaScript code that you write. It will have a clean, polished, and responsive user interface. This week’s coursework has taught you all the skills you need to succeed in this challenge.
+Google Chrome
+Mozilla Firefox
+Safari
+Microsoft Edge
+No additional software is required to run the quiz.
 
+Features
+Start Quiz: Clicking the start button begins the timer and displays the first question.
+Quiz Questions:
+Each question is presented along with multiple-choice answer buttons.
+Upon clicking an answer, the application will automatically proceed to the next question.
+If the selected answer is incorrect, a penalty is applied by subtracting time from the remaining timer.
+Timer: The quiz timer counts down until it reaches zero or all questions have been answered.
+Scoring: At the end of the quiz, the user's score is calculated based on the number of correct answers and the remaining time.
+Save Score: The application allows users to save their initials along with their score to keep track of the high scores.
+Usage
+Start the Quiz: Press the 'Start' button on the main screen to begin.
+Answer Questions: Click on the button that corresponds to your selected answer for each question - a different sound effect will play according to whether or not you’ve answered correctly.
+Monitor the Timer: Keep an eye on the timer as incorrect answers will penalise you by reducing the time by 5 seconds.
+End of Quiz: When all questions have been answered, or the timer reaches zero, the quiz will end and your score will be displayed.
+Save Your Score: Enter your initials and submit to save your score to the high score list, you also have the ability to clear all high scores.
+Customising Questions
+If you're a developer, you can easily add or modify questions by editing the questions.js file within the js directory. Follow the existing format to maintain functionality:
 
-## User Story
+Questions
 
-```
-AS A coding boot camp student
-I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
-SO THAT I can gauge my progress compared to my peers
-```
-
-## Acceptance Criteria
-
-Create a code quiz that contains the following requirements:
-
-* A start button that when clicked a timer starts and the first question appears.
- 
-  * Questions contain buttons for each answer.
-  * 
-  * When answer is clicked, the next question appears
-  * 
-  * If the answer clicked was incorrect then subtract time from the clock
-
-* The quiz should end when all questions are answered or the timer reaches 0.
-
-  * When the game ends, it should display their score and give the user the ability to save their initials and their score
-  
-## Mock-Up
-
-The following animation demonstrates the application functionality:
-
-![Animation of code quiz. Presses button to start quiz. Clicks the button for the answer to each question, displays if answer was correct or incorrect. Quiz finishes and displays high scores. User adds their intials, then clears their intials and starts over.](./assets/08-web-apis-challenge-demo.gif)
-
-## Grading Requirements
-
-This challenge is graded based on the following criteria: 
-
-### Technical Acceptance Criteria: 40%
-
-* Satisfies all of the above acceptance criteria.
-
-### Deployment: 32%
-
-* Application deployed at live URL.
-
-* Application loads with no errors.
-
-* Application GitHub URL submitted.
-
-* GitHub repository that contains application code.
-
-### Application Quality: 15%
-
-* Application user experience is intuitive and easy to navigate.
-
-* Application user interface style is clean and polished.
-
-* Application resembles the mock-up functionality provided in the challenge instructions.
-
-### Repository Quality: 13%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains quality README file with description, screenshot, and link to deployed application.
-
-
-## Review
-
-You are required to submit BOTH of the following for review:
-
-* The URL of the functional, deployed application.
-
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
-
----
-© 2023 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+{
+  question: "What is the capital of France?",
+  choices: ["New York", "London", "Paris", "Tokyo"],
+  correctAnswer: "Paris"
+},

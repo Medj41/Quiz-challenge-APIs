@@ -6,9 +6,6 @@ let startScreen = document.querySelector("#start-screen");
 let ednOfQuiz = document.querySelector('#end-screen');
 let yourScore = document.getElementById('final-score');
 let submitButton = document.getElementById('submit');
-// let inputElement = document.getElementById('initials');
-// let initials = inputElement.value;
-// console.log(initials);
 
 let buttonOption = "";
 
@@ -21,7 +18,7 @@ let Questions = [
   },
   {
     question: "How can you declare a variable in JavaScript?",
-    choices: ["var myVar", " variable myVar", " let myVar", "const myVar"],
+    choices: ["var myVar", "variable myVar", "let myVar", "const myVar"],
     correctAnswer: "let myVar",
   },
   {
@@ -31,33 +28,25 @@ let Questions = [
   },
   {
     question: "How do you comment a single line of code in JavaScript?",
-    choices: [" /* comment */", " // comment", " <!-- comment -->", " -- comment --"],
-    correctAnswer: " // comment",
+    choices: ["/* comment */", "// comment", "<!-- comment -->", "-- comment --"],
+    correctAnswer: "// comment",
   },
   {
     question: "What does the JSON.stringify() function do in JavaScript?",
-    choices: [" Parses a JSON string into an object", "  Converts a JavaScript object into a JSON string", " Compares two JSON objects for equality", "Removes all spaces from a JSON string"],
+    choices: ["Parses a JSON string into an object", "Converts a JavaScript object into a JSON string", " Compares two JSON objects for equality", "Removes all spaces from a JSON string"],
     correctAnswer: "Converts a JavaScript object into a JSON string",
   },
 
   {
     question: "How can you check the type of a variable in JavaScript?",
-    choices: [" ) typeof myVar", "  typeOf(myVar)", "myVar.type()", " getVariableType(myVar)"],
-    correctAnswer: "typeof myVar",
+    choices: [") typeof myVar", "typeOf(myVar)", "myVar.type()", " getVariableType(myVar)"],
+    correctAnswer: "typeOf(myVar)",
   },
-  {
-    question: "",
-    choices: ["", "", "", ""],
-    correctAnswer: "",
-  }
-
-
-
 ];
 
 let questionIndex = 0;
 let score = 0;
-
+var timerInterval;
 
 
 // start the quiz 
@@ -73,19 +62,13 @@ function startQuiz() {
 var timer = document.getElementById('time');
 let secondsLeft = 60;
 function setTime() {
-  var timerInterval = setInterval(function () {
+   timerInterval = setInterval(function () {
     secondsLeft--;
     timer.textContent = secondsLeft;
     if (secondsLeft <= 0) {
       clearInterval(timerInterval);
     }
-    // issue with dispplaying all questions
-    if (questionIndex === 4) {
-      
-      // yourScore.innerHTML = secondsLeft;
-      clearInterval(timerInterval);
-    
-    }
+
   }, 1000);
 }
 
@@ -124,27 +107,25 @@ function getQuestion() {
         choices.appendChild(result);
         result.innerHTML = "Correct";
         rightSound();
-        // alert('correct')
-        questionIndex++;
-
-        getQuestion();
       } else {
         let result = document.createElement('p');
         choices.appendChild(result);
         result.innerHTML = "Wrong";
         wrongSound()
-        // alert('wrong')
-        questionIndex++;
         secondsLeft -= 5;
-        getQuestion();
+    
       }
 
 
 
-// issue with dispplaying all questions
-      if (questionIndex === 4) { 
+      if (questionIndex === Questions.length - 1) { 
         endQuiz();
-        setTime();
+        clearInterval(timerInterval)
+      } else{
+        questionIndex++;
+        setTimeout(function(){
+          getQuestion()
+        } ,1000);
       }
     });
 
@@ -169,7 +150,6 @@ const scoreInitials = []
 
 function saveScoreInitials() {
 
-  // why this one did work but not when created at the top
   let inputElement = document.getElementById('initials');
   let initials = inputElement.value;
   score = yourScore.innerHTML
@@ -180,18 +160,6 @@ function saveScoreInitials() {
   scoreInitials.puinitials;
   console.log(JSON.parse(localStorage.getItem('score')));
   console.log(localStorage.getItem('initials'));
-
-
-  // let endResult = document.querySelector('#highscores');
-  // console.log(endResult);
-  // let liEl = document.createElement('li');
-  // console.log(liEl);
-
-  // liEl.innerHTML = 'Hello'
-  // endResult.appendChild(liEl);
-
-  // console.log((`${localStorage.getItem('initials')}-${JSON.parse(localStorage.getItem('score'))}`));
-
 }
 
 

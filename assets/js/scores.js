@@ -10,24 +10,15 @@ let endResult = document.querySelector('#highscores');
 console.log(endResult);
 let liEl = document.createElement('li');
 console.log(liEl);
-let score = '';
-let initials = '';
+let score = JSON.parse(localStorage.getItem('score'));
+let initials = localStorage.getItem('initials');
 let player= [];
-player = (`${localStorage.getItem('initials')}-${JSON.parse(localStorage.getItem('score'))}`)
-liEl.innerHTML =  player 
+
+if (score && initials ){
+  player = (`${localStorage.getItem('initials')}-${JSON.parse(localStorage.getItem('score'))}`);
+  liEl.innerHTML =  player 
 endResult.appendChild(liEl)
-
-
-
-
-// for (let i = 0; i < liEl.length; i++) {
-//   let liEl = document.createElement('li');
-//   let player = liEl[i];
-//   liEl.innerHTML =  player 
-//   liEl.push(player)
-//   liEl++
-//   endResult.appendChild(liEl)
-// }
+};
 
 
 
@@ -41,8 +32,6 @@ cleareScores.addEventListener('click', function removeScore(){
  
   let liEl = document.querySelector('li');
   liEl.remove();
-
-  // keep or remove ??
   localStorage.removeItem('score');
   localStorage.removeItem('initials');
    score = '';
