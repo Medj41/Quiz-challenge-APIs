@@ -7,9 +7,7 @@ let initials = '';
 
 function highscoresTime(){
 let endResult = document.querySelector('#highscores');
-console.log(endResult);
 let liEl = document.createElement('li');
-console.log(liEl);
 let score = JSON.parse(localStorage.getItem('score'));
 let initials = localStorage.getItem('initials');
 let player= [];
